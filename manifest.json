@@ -1,0 +1,22 @@
+{
+  "name": "Quantum",
+  "version": "1.0",
+  "description": "Quantum",
+  "permissions": ["tabs"],
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["./scripts/main.js"]
+  }],
+  "browser_action": {
+    "default_popup": "./public/index.html"
+  },
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  },
+  "icons": {
+    "128": "./icons/icon.png"
+  },
+
+  "manifest_version": 2
+}

@@ -1,0 +1,28 @@
+html
+    head
+        title Quantum
+
+        link(href='../public/node_modules/@fortawesome/fontawesome-free/css/all.css' rel='stylesheet')
+        link(href='../public/styles/main.css' rel='stylesheet')
+
+        link(href='../icons/icon.png' type='image/png' rel='icon')
+
+        script(src='script.js')
+
+        meta(name='viewport' content='width=device-width, initial-scale=1')
+    body.-auto
+        .preview
+            img(src='../icons/icon.png' width='100px' height='100px')
+
+            h1 Share code
+            img(src='#').qr
+            br
+            input(type='text').input.input
+            br
+
+            a(href='#').button.-important.copy
+                i.fas.fa-clipboard
+                | Copy link
+            a(href='#').button.close
+                i.fas.fa-trash
+                | Close

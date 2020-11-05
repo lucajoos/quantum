@@ -1,0 +1,38 @@
+html
+    body
+        .button
+            margin 10px
+            padding 15px 45px
+            border-radius $border-radius
+            text-decoration none
+            display inline-block
+            box-shadow 0 5px 12px 0 rgba(47,50,63,0.1)
+            color $grey
+            font-size 1.1em
+            cursor pointer
+            background $background-highlight
+            overflow hidden
+
+            transition box-shadow .3s, background .3s
+
+            &.-important
+                background $blue
+                color $white
+
+            &.-important:hover
+                background $blue-highlight
+
+            &.-done
+                background $green
+                color $white
+                pointer-events none
+
+            &.-back
+                padding 10px
+                border-radius 100px
+                position absolute
+                top 7.5px
+                left 25px
+
+                i
+                    margin 0

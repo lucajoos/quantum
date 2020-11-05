@@ -1,0 +1,7 @@
+html body .preview .input {
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+  border: 0 none transparent;
+}

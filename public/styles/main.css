@@ -1,0 +1,309 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;900&display=swap");
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+html body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 1.1em;
+}
+html body h1 {
+  font-weight: 900;
+  font-size: 3.7em;
+  margin: 20px 0;
+}
+html body p {
+  font-size: 1.25em;
+  font-weight: 300;
+  color: #73869e;
+  margin: 40px 20px;
+}
+html {
+  height: 0;
+}
+html body {
+  background: #161821;
+  color: #f0f6ff;
+  text-align: center;
+  position: relative;
+  width: 620px;
+}
+html body * {
+  outline: none;
+}
+html body > * {
+  padding: 30px 80px 80px 80px;
+}
+html body.-auto {
+  width: auto;
+}
+html body i {
+  transition: transform 0.3s;
+  overflow: hidden;
+  margin: 0 10px 0 0;
+  font-size: 0.9em;
+}
+html body .share .-back:hover i,
+html body .sync .-back:hover i {
+  transform: translateX(-2px);
+}
+html body .index .index--share:hover i {
+  transform: translateY(-2px) translateX(2px) rotate(15deg);
+}
+html body .index .index--sync:hover i {
+  transform: rotate(90deg);
+}
+html body .preview .copy:hover i {
+  transform: translateY(-2px);
+}
+html body .preview .close:hover i {
+  transform: translateY(-2px);
+}
+html body .share .close:hover i {
+  animation: max-width 0.3s ease-out;
+}
+@-moz-keyframes max-width {
+  0% {
+    max-width: 0;
+    margin-right: calc(1em + 10px);
+  }
+  100% {
+    max-width: 1em;
+    margin-right: 10px;
+  }
+}
+@-webkit-keyframes max-width {
+  0% {
+    max-width: 0;
+    margin-right: calc(1em + 10px);
+  }
+  100% {
+    max-width: 1em;
+    margin-right: 10px;
+  }
+}
+@-o-keyframes max-width {
+  0% {
+    max-width: 0;
+    margin-right: calc(1em + 10px);
+  }
+  100% {
+    max-width: 1em;
+    margin-right: 10px;
+  }
+}
+@keyframes max-width {
+  0% {
+    max-width: 0;
+    margin-right: calc(1em + 10px);
+  }
+  100% {
+    max-width: 1em;
+    margin-right: 10px;
+  }
+}
+html body .banner {
+  margin: 40px 20px 20px 20px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 5px 12px 0 rgba(47,50,63,0.1);
+  background: #222e3e;
+  border-radius: 7px;
+  color: #f0f6ff;
+  display: grid;
+  grid-template-columns: auto fit-content(100%);
+  vertical-align: center;
+  transition: all 0.5s;
+  pointer-events: all;
+  max-height: 60px;
+}
+html body .banner.-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+html body .banner.-out {
+  max-height: 0;
+  padding: 0;
+  margin: 0;
+}
+html body .banner .banner--dismiss {
+  cursor: pointer;
+}
+html body .button {
+  margin: 10px;
+  padding: 15px 45px;
+  border-radius: 7px;
+  text-decoration: none;
+  display: inline-block;
+  box-shadow: 0 5px 12px 0 rgba(47,50,63,0.1);
+  color: #73869e;
+  font-size: 1.1em;
+  cursor: pointer;
+  background: #222e3e;
+  overflow: hidden;
+  transition: box-shadow 0.3s, background 0.3s;
+}
+html body .button.-important {
+  background: #0775f5;
+  color: #f0f6ff;
+}
+html body .button.-important:hover {
+  background: #0969d6;
+}
+html body .button.-done {
+  background: #05b082;
+  color: #f0f6ff;
+  pointer-events: none;
+}
+html body .button.-back {
+  padding: 10px;
+  border-radius: 100px;
+  position: absolute;
+  top: 7.5px;
+  left: 25px;
+}
+html body .button.-back i {
+  margin: 0;
+}
+.input {
+  background: #222e3e;
+  color: #73869e;
+  padding: 12.5px 30px;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  font-size: 1.1em;
+  text-align: center;
+}
+html body .preview .qr {
+  margin: 50px 0;
+  border-radius: 7px;
+}
+html body .preview .button {
+  margin: 50px 10px;
+}
+html body .preview .button.copy {
+  transition: background 0.5s;
+}
+html body .preview .button.copy i.fa-check {
+  animation: max-width 0.3s ease-out;
+}

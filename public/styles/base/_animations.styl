@@ -1,0 +1,34 @@
+@keyframes max-width
+  0%
+    max-width 0
+    margin-right calc(1em + 10px)
+
+  100%
+    max-width 1em
+    margin-right 10px
+
+html
+  body
+    .share, .sync
+      .-back:hover
+        i
+          transform translateX(-2px)
+    .index
+      .index--share:hover
+        i
+          transform translateY(-2px) translateX(2px) rotate(15deg)
+      .index--sync:hover
+        i
+          transform rotate(90deg)
+    .preview
+      .copy:hover
+        i
+          transform translateY(-2px)
+      .close:hover
+        i
+          transform translateY(-2px)
+
+    .share
+      .close:hover
+        i
+          animation max-width .3s ease-out

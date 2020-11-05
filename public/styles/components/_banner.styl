@@ -1,0 +1,31 @@
+html
+    body
+        .banner
+            margin 40px 20px 20px 20px
+            padding 20px
+            text-align center
+            box-shadow 0 5px 12px 0 rgba(47,50,63,0.1)
+            background $background-highlight
+            border-radius $border-radius
+            color $white
+            display grid
+
+            grid-template-columns auto fit-content(100%)
+            vertical-align center
+
+            transition all .5s
+
+            pointer-events all
+            max-height 60px
+
+            &.-hidden
+                opacity 0
+                pointer-events none
+
+            &.-out
+                max-height 0
+                padding 0
+                margin 0
+
+            .banner--dismiss
+                cursor pointer
