@@ -8,6 +8,19 @@ html
         position relative
         width 620px
 
+        #canvas, #confetti
+            position absolute
+            top 0
+            left 0
+            right 0
+            bottom 0
+            pointer-events none
+            z-index -1
+            transition width .5s, height .5s
+        
+        &:not(.-no-transition)
+            transition background .3s, color .3s
+
         *
             outline none
 
@@ -17,9 +30,21 @@ html
         &.-auto
             width auto
 
+        video
+            border-radius $border-radius
 
         i
             transition transform .3s
             overflow hidden
             margin 0 10px 0 0
             font-size .9em
+
+        &.-light
+            background $white
+            color $background
+
+            .button
+                color $white
+
+            .input
+                color $white

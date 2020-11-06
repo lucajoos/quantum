@@ -1,6 +1,5 @@
 let emit = (type, data) => {
     chrome.tabs.query({ active: true }, (tabs) => {
-        console.log(tabs)
         tabs.forEach(tab => {
             try {
                 chrome.tabs.sendMessage(tab.id, {from: 'background', type: type, data: data}, () => {});
@@ -10,19 +9,27 @@ let emit = (type, data) => {
         });
     });
 
-    chrome.runtime.sendMessage({from: 'background', type: type, data: data}, () => {});
+    try {
+        chrome.runtime.sendMessage({from: 'background', type: type, data: data}, () => {});
+    } catch(e) {
+        console.log(e)
+    }
 }
 
 let message = (from, type, callback) => {
-    chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-        if(request.from === from && request.type === type) {
-            callback(request.data, sender);
-        }
-    });
+    try {
+        chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+            if(request.from === from && request.type === type) {
+                callback(request.data, sender);
+            }
+        });
+    } catch(e) {
+        console.log(e)
+    }
 }
 
-message('popup', 'share', () => {
-    emit('share');
+message('popup', 'share', theme => {
+    emit('share', theme);
 })
 
 message('popup', 'share-stop', () => {

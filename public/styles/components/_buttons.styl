@@ -6,18 +6,19 @@ html
             border-radius $border-radius
             text-decoration none
             display inline-block
-            box-shadow 0 5px 12px 0 rgba(47,50,63,0.1)
             color $grey
             font-size 1.1em
             cursor pointer
             background $background-highlight
             overflow hidden
+            box-shadow -3px 5px 17px 0 rgba(34, 46, 62, 0.2)
 
             transition box-shadow .3s, background .3s
 
             &.-important
                 background $blue
                 color $white
+                box-shadow -3px 5px 17px 0 rgba(7, 117, 245, 0.35)
 
             &.-important:hover
                 background $blue-highlight
@@ -26,13 +27,18 @@ html
                 background $green
                 color $white
                 pointer-events none
+                box-shadow -3px 5px 17px 0 rgba(5, 176, 130, 0.35)
 
-            &.-back
+            &.-back, &.-settings
                 padding 10px
                 border-radius 100px
                 position absolute
                 top 7.5px
                 left 25px
+
+                &.-settings
+                    left auto
+                    right 25px
 
                 i
                     margin 0

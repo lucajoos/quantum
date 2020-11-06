@@ -143,10 +143,24 @@ html {
 }
 html body {
   background: #161821;
-  color: #f0f6ff;
+  color: #fff;
   text-align: center;
   position: relative;
   width: 620px;
+}
+html body #canvas,
+html body #confetti {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: -1;
+  transition: width 0.5s, height 0.5s;
+}
+html body:not(.-no-transition) {
+  transition: background 0.3s, color 0.3s;
 }
 html body * {
   outline: none;
@@ -157,11 +171,24 @@ html body > * {
 html body.-auto {
   width: auto;
 }
+html body video {
+  border-radius: 7px;
+}
 html body i {
   transition: transform 0.3s;
   overflow: hidden;
   margin: 0 10px 0 0;
   font-size: 0.9em;
+}
+html body.-light {
+  background: #fff;
+  color: #161821;
+}
+html body.-light .button {
+  color: #fff;
+}
+html body.-light .input {
+  color: #fff;
 }
 html body .share .-back:hover i,
 html body .sync .-back:hover i {
@@ -173,11 +200,17 @@ html body .index .index--share:hover i {
 html body .index .index--sync:hover i {
   transform: rotate(90deg);
 }
+html body .index .-settings:hover i {
+  transform: rotate(45deg);
+}
 html body .preview .copy:hover i {
   transform: translateY(-2px);
 }
 html body .preview .close:hover i {
   transform: translateY(-2px);
+}
+html body .share .cancel:hover i {
+  transform: translateY(2px);
 }
 html body .share .close:hover i {
   animation: max-width 0.3s ease-out;
@@ -229,7 +262,7 @@ html body .banner {
   box-shadow: 0 5px 12px 0 rgba(47,50,63,0.1);
   background: #222e3e;
   border-radius: 7px;
-  color: #f0f6ff;
+  color: #fff;
   display: grid;
   grid-template-columns: auto fit-content(100%);
   vertical-align: center;
@@ -255,34 +288,43 @@ html body .button {
   border-radius: 7px;
   text-decoration: none;
   display: inline-block;
-  box-shadow: 0 5px 12px 0 rgba(47,50,63,0.1);
   color: #73869e;
   font-size: 1.1em;
   cursor: pointer;
   background: #222e3e;
   overflow: hidden;
+  box-shadow: -3px 5px 17px 0 rgba(34,46,62,0.2);
   transition: box-shadow 0.3s, background 0.3s;
 }
 html body .button.-important {
   background: #0775f5;
-  color: #f0f6ff;
+  color: #fff;
+  box-shadow: -3px 5px 17px 0 rgba(7,117,245,0.35);
 }
 html body .button.-important:hover {
   background: #0969d6;
 }
 html body .button.-done {
   background: #05b082;
-  color: #f0f6ff;
+  color: #fff;
   pointer-events: none;
+  box-shadow: -3px 5px 17px 0 rgba(5,176,130,0.35);
 }
-html body .button.-back {
+html body .button.-back,
+html body .button.-settings {
   padding: 10px;
   border-radius: 100px;
   position: absolute;
   top: 7.5px;
   left: 25px;
 }
-html body .button.-back i {
+html body .button.-back.-settings,
+html body .button.-settings.-settings {
+  left: auto;
+  right: 25px;
+}
+html body .button.-back i,
+html body .button.-settings i {
   margin: 0;
 }
 .input {
@@ -294,8 +336,57 @@ html body .button.-back i {
   font-size: 1.1em;
   text-align: center;
 }
+.switch label {
+  cursor: pointer;
+  color: #73869e;
+}
+.switch label input[type='checkbox'] {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.switch label span.lever {
+  width: 45px;
+  height: 12.5px;
+  border-radius: 15px;
+  background: #222e3e;
+  display: inline-block;
+  position: relative;
+  margin: 0 15px 0 10px;
+}
+.switch label span.lever:after {
+  content: '';
+  position: absolute;
+  width: 17.5px;
+  height: 17.5px;
+  border-radius: 100%;
+  background: #0775f5;
+  left: -2.5px;
+  top: -2.5px;
+  transition: background 0.3s, left 0.3s;
+}
+.switch label input[type='checkbox']:checked ~ span.lever:after {
+  left: 30px;
+}
+html body .index .icon {
+  cursor: pointer;
+  transition: width 0.3s, height 0.3s;
+}
+html body .index .icon.-big {
+  width: 110px;
+  height: 110px;
+}
+html body .index .icon.-bigger {
+  width: 120px;
+  height: 120px;
+}
+html body .index .icon.-explosion {
+  width: 165px;
+  height: 165px;
+}
 html body .preview .qr {
   margin: 50px 0;
+  border: 5px solid transparent;
   border-radius: 7px;
 }
 html body .preview .button {

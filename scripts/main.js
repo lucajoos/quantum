@@ -15,7 +15,10 @@
     let currentStyle = '';
     let active = false;
     let style = '';
+    let theme = 'true';
+    
     let params = new URL(window.location.href).searchParams;
+    let paramsCopy = new URL(window.location.href).searchParams;
 
     let reset = () => {
         active = false;
@@ -26,8 +29,11 @@
         }
     }
 
-    message('background', 'share', () => {
+    message('background', 'share', data => {
+        theme = data;
         active = true;
+
+        document.body.setAttribute('style', `${style} cursor: pointer !important;`);
     });
 
     message('background', 'share-stop', () => {
@@ -36,10 +42,13 @@
 
     window.addEventListener('load', () => {
         style = document.body.getAttribute('style') === null ? '' : document.body.getAttribute('style');
-        document.body.setAttribute('style', `${style} cursor: pointer !important;`);
 
         if(params.get('quantum') === 'true') {
-            window.history.replaceState({}, document.title, window.location.pathname);
+            paramsCopy.delete('quantum');
+            paramsCopy.delete('f');
+            paramsCopy.delete('i');
+
+            window.history.replaceState({}, document.title, `${window.location.pathname}${paramsCopy.toString().length > 0 ? '?' : ''}${paramsCopy.toString()}`);
 
             if(params.get('f') !== null && params.get('i') !== null) {
                 let element = document.querySelectorAll(params.get('f').replace('[ID]', '#'))[params.get('i')];
@@ -48,7 +57,7 @@
                 element.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
                 setTimeout(() => {
-                    element.setAttribute('style', `${elementStyle} transition: all 1s; background: #222e3e !important; color: #f0f6ff !important;`);
+                    element.setAttribute('style', `${elementStyle} transition: all 1s; background: #ffe564 !important; color: #161821 !important;`);
 
                     setTimeout(() => {
                         element.setAttribute('style', `${elementStyle} transition: all 1s;`);
@@ -68,45 +77,50 @@
                 }
 
                 current = document.elementFromPoint(event.clientX, event.clientY);
-                currentStyle = current.getAttribute('style') === null ? '' : current.getAttribute('style');
 
-
-                current.setAttribute('style', `${currentStyle} background: #222e3e !important; color: #f0f6ff !important;`)
+                if(current) {
+                    currentStyle = current.getAttribute('style') === null ? '' : current.getAttribute('style');
+                    current.setAttribute('style', `${currentStyle} background: #ffe564 !important; color: #161821 !important; text-decoration: none !important;`);
+                }
             }
         });
 
-        window.addEventListener('click', () =>  {
-            reset();
+        window.addEventListener('click', e =>  {
+            if(active) {
+                e.preventDefault();
+                reset();
 
-            let finder;
-            let index;
+                let finder;
+                let index;
 
-            if(current.id) {
-                finder = `[ID]${current.id}`;
-                index = 0;
-            } else if(current.classList.length > 0) {
-                finder = `.${[...current.classList].join('.')}`;
+                if(typeof current !== 'undefined' ? current.id : false) {
+                    finder = `[ID]${current.id}`;
+                    index = 0;
+                } else if(current.classList.length > 0) {
+                    finder = `.${[...current.classList].join('.')}`;
 
-                [...document.querySelectorAll(finder)].forEach((currentElement, currentIndex) => {
-                    if(currentElement === current) {
-                        index = currentIndex;
-                    }
-                });
-            } else {
-                finder = current.tagName.toLowerCase();
+                    [...document.querySelectorAll(finder)].forEach((currentElement, currentIndex) => {
+                        if(currentElement === current) {
+                            index = currentIndex;
+                        }
+                    });
+                } else {
+                    finder = current.tagName.toLowerCase();
 
-                [...document.querySelectorAll(finder)].forEach((currentElement, currentIndex) => {
-                    if(currentElement === current) {
-                        index = currentIndex;
-                    }
-                });
+                    [...document.querySelectorAll(finder)].forEach((currentElement, currentIndex) => {
+                        if(currentElement === current) {
+                            index = currentIndex;
+                        }
+                    });
+                }
+
+                emit('share-done', {
+                    finder: finder,
+                    index: index,
+                    href: window.location.href,
+                    theme: theme
+                })
             }
-
-            emit('share-done', {
-                finder: finder,
-                index: index,
-                href: window.location.href
-            })
         });
     })
 })();

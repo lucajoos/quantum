@@ -4,6 +4,27 @@ let scripts = [];
 let previousScripts = [];
 let last = '';
 
+let updateTheme = () => {
+    if(localStorage.getItem('quantum-theme') !== null ? localStorage.getItem('quantum-theme').length > 0 : false) {
+        let theme = localStorage.getItem('quantum-theme');
+
+        if(theme === 'true') {
+            if(document.body.classList.contains('-light')) {
+                document.body.classList.remove('-light');
+            }
+        } else if(!document.body.classList.contains('-light')) {
+            document.body.classList.add('-light')
+        }
+    }
+};
+
+let changeTheme = boolean => {
+    if(typeof boolean === 'boolean') {
+        localStorage.setItem('quantum-theme', boolean);
+        updateTheme();
+    }
+}
+
 let emit = (type, data) => {
     chrome.runtime.sendMessage({from: 'popup', type: type, data: data}, () => {});
 }
@@ -106,9 +127,12 @@ window.addEventListener('load', () => {
 state.once('ready', () => {
     try {
         show('pages/index.html').once('done', () => {
+            script('node_modules/confetti-js/dist/index.min.js');
             script('js/pages/index.js');
+
+            updateTheme();
         });
     } catch(e) {
         console.error(e);
     }
-})
+});

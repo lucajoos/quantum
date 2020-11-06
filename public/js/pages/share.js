@@ -1,12 +1,22 @@
-state.once('ready', () => {
-    document.querySelector('.-back').addEventListener('click', () => {
+(() => {
+    let re = () => {
         emit('share-stop');
         back();
-    });
+    };
 
-    document.querySelector('.close').addEventListener('click', () => {
-        window.close();
-    });
+    state.once('ready', () => {
+        document.querySelector('.-back').addEventListener('click', () => {
+            re();
+        });
 
-    emit('share');
-})
+        document.querySelector('.cancel').addEventListener('click', () => {
+            re();
+        });
+
+        document.querySelector('.close').addEventListener('click', () => {
+            window.close();
+        });
+
+        emit('share', localStorage.getItem('quantum-theme') !== null ? localStorage.getItem('quantum-theme') : 'true');
+    })
+})();
