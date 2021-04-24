@@ -1,4 +1,4 @@
-# Quantum Chrome Extension
+# Quantum
 Run `npm install`
 
 ## Build
