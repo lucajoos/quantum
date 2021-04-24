@@ -102,3 +102,9 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Compiled styles, templates
+*.css
+*.html
+
+package-lock.json
