@@ -1,2 +1,2 @@
-# quantum-client
+# Quantum Chrome Extension
  
