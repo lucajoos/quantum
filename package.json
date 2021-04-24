@@ -1,7 +1,7 @@
 {
   "name": "quantum",
   "version": "1.2.0",
-  "description": "",
+  "description": "A Chrome extension designed to share website states between multiple devices.",
   "scripts": {
     "build": "pug preview public && cd ./public/styles/ && stylus < ./main.styl > ./main.css"
   },
@@ -12,7 +12,7 @@
   "keywords": [
     "quantum"
   ],
-  "author": "",
+  "author": "Luca Joos",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/lucajoos/quantum/issues"
