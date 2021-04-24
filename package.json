@@ -9,17 +9,18 @@
     "type": "git",
     "url": "git+https://github.com/lucajoos/quantum.git"
   },
-
-  "keywords": ["quantum"],
+  "keywords": [
+    "quantum"
+  ],
   "author": "",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/lucajoos/quantum/issues"
   },
   "homepage": "https://github.com/lucajoos/quantum#readme",
-
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.3",
+    "pug": "^3.0.2",
     "pug-cli": "^1.0.0-alpha6",
     "stylus": "^0.54.8"
   }
